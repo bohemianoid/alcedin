@@ -6,6 +6,7 @@ require 'recipe/laravel.php';
 // Config
 
 set('repository', 'https://github.com/bohemianoid/alcedin.git');
+set('php_version', '8');
 
 add('shared_files', []);
 add('shared_dirs', []);

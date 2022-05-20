@@ -1,0 +1,4 @@
+hosts:
+  example.org:
+    remote_user: deployer
+    deploy_path: ~/example

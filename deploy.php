@@ -14,9 +14,7 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('s076.cyon.net')
-    ->set('remote_user', 'simonrot')
-    ->set('deploy_path', '~/public_html/simonrot/alcedin.bohemiano.id/alcedin');
+import('inventory.yaml');
 
 // Tasks
 

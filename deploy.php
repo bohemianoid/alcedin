@@ -23,7 +23,7 @@ task('deploy:writable')->disable();
 
 task('build', function () {
     cd('{{release_path}}');
-    run('npm run build');
+    run('npm run prod');
 });
 
 after('deploy:failed', 'deploy:unlock');

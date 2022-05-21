@@ -49,6 +49,9 @@
         ],
         "lint": [
             "php-cs-fixer fix -v --dry-run --diff"
+        ],
+        "deploy": [
+            "deployer.phar deploy"
         ]
     },
     "extra": {

@@ -1,0 +1,3 @@
+<pre>
+    {{ $header->headersRaw }}
+</pre>

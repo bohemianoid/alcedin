@@ -15,6 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('mail:junk')
+                 ->hourly();
+
         $schedule->command('notify:drink')
                  ->cron('*/20 * * * *')
                  ->between('07:00', '21:30');

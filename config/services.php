@@ -35,4 +35,13 @@ return [
         'key' => env('IFTTT_MAKER_KEY'),
     ],
 
+    'imap' => [
+        'host' => env('IMAP_HOST'),
+        'port' => env('IMAP_PORT'),
+        'encryption' => env('IMAP_ENCRYPTION'),
+        'prefix' => env('IMAP_PATH_PREFIX'),
+        'username' => env('IMAP_USERNAME'),
+        'password' => env('IMAP_PASSWORD'),
+    ],
+
 ];

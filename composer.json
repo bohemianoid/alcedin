@@ -15,7 +15,7 @@
     "require-dev": {
         "deployer/deployer": "^7.0.0",
         "fakerphp/faker": "^1.9.1",
-        "friendsofphp/php-cs-fixer": "^3.8",
+        "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
@@ -50,7 +50,7 @@
             "@php artisan key:generate --ansi"
         ],
         "lint": [
-            "php-cs-fixer fix -v --dry-run --diff",
+            "pint --test",
             "phpstan analyse"
         ],
         "deploy": [

@@ -48,10 +48,21 @@ class GetJunkHeaders extends Command
         foreach ($mailIds as $mailId) {
             $header = $mailbox->getMailHeader($mailId);
 
+            $zip = new \ZipArchive();
+            $file = tmpfile();
+            $fileUri = stream_get_meta_data($file)['uri'];
+
+            if ($zip->open($fileUri, \ZipArchive::CREATE) === true) {
+                $zip->addFromString('header.txt', $header->headersRaw);
+                $zip->close();
+            }
+
             Mail::to(config('services.imap.username'))
-                ->send(new JunkHeader($header));
+                ->send(new JunkHeader($fileUri, 'header.zip'));
 
             $mailbox->markMailAsRead($mailId);
+
+            fclose($file);
         }
 
         return 0;

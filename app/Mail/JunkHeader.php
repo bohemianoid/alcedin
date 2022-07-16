@@ -5,28 +5,36 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use PhpImap\IncomingMailHeader;
 
 class JunkHeader extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * The header instance.
+     * The attachment URI.
      *
-     * @var \PhpImap\IncomingMailHeader
+     * @var string
      */
-    public $header;
+    public $attachmentUri;
+
+    /**
+     * The attachment name.
+     *
+     * @var string
+     */
+    public $attachmentName;
 
     /**
      * Create a new message instance.
      *
-     * @param  \PhpImap\IncomingMailHeader  $header
+     * @param  string  $attachmentUri
+     * @param  string  $attachmentName
      * @return void
      */
-    public function __construct(IncomingMailHeader $header)
+    public function __construct(string $attachmentUri, string $attachmentName)
     {
-        $this->header = $header;
+        $this->attachmentUri = $attachmentUri;
+        $this->attachmentName = $attachmentName;
     }
 
     /**
@@ -36,6 +44,9 @@ class JunkHeader extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.junk');
+        return $this->view('mails.junk')
+                    ->attach($this->attachmentUri, [
+                        'as' => $this->attachmentName,
+                    ]);
     }
 }
